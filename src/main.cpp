@@ -36,12 +36,16 @@ void	delModules(std::vector<IMonitorModule*> modules)
 int		main(void)
 {
 	std::vector<IMonitorModule*> modules;
+	std::vector<IMonitorModule*>::iterator it;
 
 	initModules(&modules);
+
+	for (it = modules.begin(); it != modules.end(); ++it)
+		(*it)->makeAll();
+
 	int i = 0;
 	while (i < 5) // while true
 	{
-		std::vector<IMonitorModule*>::iterator it;
 		for (it = modules.begin(); it != modules.end(); ++it)
 			(*it)->update();
 		// print() ?;

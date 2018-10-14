@@ -18,7 +18,7 @@
 class	DateTimeModule : public IMonitorModule
 {
 	private:
-		std::string _dateTime;
+		std::string _dateTime; // Sun Oct 14 12:46:58 2018
 
 	public:
 		DateTimeModule();

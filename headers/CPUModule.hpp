@@ -14,14 +14,12 @@
 # define CPUMODULE_HPP
 
 #include "header.hpp"
-// top -l 1 -n0 | grep -e "Processes" -e "CPU usage"
+
 class	CPUModule : public IMonitorModule
 {
 	private:
-		std::string		_generalInfo;
-		// std::string		_topOutput;
-		// std::string		_processes;
-		std::string		_usage; // top -l 1 | grep "CPU usage"
+		std::string		_generalInfo; // Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
+		std::string		_usage; // CPU usage: 26.43% user, 31.3% sys, 42.52% idle
 
 	public:
 		CPUModule();
@@ -30,7 +28,6 @@ class	CPUModule : public IMonitorModule
 		void			makeAll(void);
 		void			update(void);
 		void			makeGeneralInfo(void);
-		// void		makeProcesses(void);
 		void			makeUsage(void);
 		std::string		getUsage(void) const;
 		std::string		getGeneralInfo(void) const;

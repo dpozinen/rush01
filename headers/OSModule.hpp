@@ -19,9 +19,9 @@
 class	OSModule : public IMonitorModule
 {
 	private:
-		std::string		_name;
-		std::string		_version;
-		std::string		_build;
+		std::string		_name; // Mac OS X
+		std::string		_version; // 10.13.3
+		std::string		_build; // 17D47
 
 	public:
 		OSModule();

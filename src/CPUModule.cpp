@@ -50,7 +50,7 @@ void	CPUModule::makeUsage()
 		return ; // TODO: throw
 	while (!feof(pipe))
 		fgets(usage, 256, pipe);
-	_usage = usage;	// CPU usage: 26.43% user, 31.3% sys, 42.52% idle
+	_usage = usage;
 	pclose(pipe);
 }
 

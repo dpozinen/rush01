@@ -18,8 +18,8 @@
 class	HostUserModule : public IMonitorModule
 {
 	private:
-		std::string	_hostName;
-		std::string	_userName;
+		std::string	_hostName; // e1r6p12.unit.ua
+		std::string	_userName; // dpozinen
 
 	public:
 		HostUserModule();
