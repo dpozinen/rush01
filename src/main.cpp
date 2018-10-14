@@ -17,6 +17,8 @@
 #include "DateTimeModule.hpp"
 #include "CPUModule.hpp"
 
+#include "Ncurses.hpp" //in header
+
 void	initModules(std::vector<IMonitorModule*> *modules)
 {
 	(*modules).push_back(new DateTimeModule());
@@ -48,6 +50,26 @@ bool	getFlag(int ac, char **args)
 
 int		main(int ac, char **args)
 {
+
+	Ncurses nc;
+
+	nc.start_ncurses();
+	if (nc.use_color() == -1)
+	{
+		return (-1);
+	}
+	nc.create_frame();
+	move(42, 2);
+	attron(COLOR_PAIR(1));
+	printw("Press any button to start!");
+	attroff(COLOR_PAIR(1));
+	nc.data();
+	nc.general();
+	nc.cpu();
+	nc.ram();
+	keypad(stdscr, true);
+	int k = 0;
+
 	/* global ? */ bool	graphical = getFlag(ac, args);
 	std::vector<IMonitorModule*> modules;
 	std::vector<IMonitorModule*>::iterator it;
@@ -57,8 +79,21 @@ int		main(int ac, char **args)
 	initModules(&modules);
 
 	int i = 0;
-	while (i < 5) // while true
+	// while (i < 5) // while true
+	// {
+	// 	for (it = modules.begin(); it != modules.end(); ++it)
+	// 		(*it)->update();
+	// 	// print() ?;
+	// 	std::cout << i << std::endl;
+	// 	i++;
+	// }
+	// printf("1_nc\n");
+
+	while (1)
 	{
+		k = getch();
+		if (k == 27)
+			break;
 		for (it = modules.begin(); it != modules.end(); ++it)
 			(*it)->update();
 		// print() ?;
@@ -66,38 +101,7 @@ int		main(int ac, char **args)
 		i++;
 	}
 	delModules(modules);
-	// OSModule om;
-
-	// om.makeAll();
-	// std::cout << om.getName();
-	// std::cout << om.getVersion();
-	// std::cout << om.getBuild();
-
-	// HostUserModule hsm;
-	// hsm.makeAll();
-	// std::cout << hsm.getHostName() << std::endl;
-	// std::cout << hsm.getUserName() << std::endl;
-
-	// DateTimeModule dtm;
-	// dtm.makeAll();
-	// std::cout << dtm.getDateTime() << std::endl;
-	// sleep(1);
-	// dtm.update();
-	// std::cout << dtm.getDateTime() << std::endl;
-	// sleep(1);
-	// dtm.update();
-	// std::cout << dtm.getDateTime() << std::endl;
-
-	// CPUModule cpum;
-	// cpum.makeAll();
-	// cpum.makeGeneralInfo();
-	// for (int i = 0; i < 5; i++)
-	// {
-		// std::cout << cpum.getUsage();
-		// std::cout << cpum.getGeneralInfo();
-	// 	cpum.update();
-	// }
-
+	nc.end_win();
 
 	return 0;
 }

@@ -12,24 +12,26 @@
 
 NAME = monitor
 
-SRC = main.cpp OSModule.cpp HostUserModule.cpp DateTimeModule.cpp CPUModule.cpp
+SRC = main.cpp OSModule.cpp HostUserModule.cpp DateTimeModule.cpp CPUModule.cpp Ncurses.cpp
 SRCDIR = src
 SRCS = $(addprefix $(SRCDIR)/, $(SRC:.cpp=.o))
+
+NCUR = -lncurses
 
 HRSDIR = headers
 
 OBJDIR = objects
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
 $(NAME): $(OBJDIR) $(OBJS) $(HRSDIR)/*
-	@g++ $(FLAGS) -lncurses $(OBJS) -o $(NAME) -I $(HRSDIR)
+	@clang++ $(FLAGS) -lncurses $(OBJS) -o $(NAME) -I $(HRSDIR)
 
 $(OBJS) : $(OBJDIR)/%.o : $(SRCDIR)/%.cpp $(HRSDIR)/*
-	@g++ $(FLAGS) -o $@ -c $< -I $(HRSDIR)
+	@clang++ $(FLAGS) -o $@ -c $< -I $(HRSDIR)
 
 $(OBJDIR):
 	@mkdir $(OBJDIR)
