@@ -1,42 +1,41 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   RAMModule.cpp                                      :+:      :+:    :+:   //
+//   NetworkModule.cpp                                  :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: dpozinen <dpozinen@student.unit.ua>        +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/10/14 13:04:02 by dpozinen          #+#    #+#             //
-//   Updated: 2018/10/14 13:04:02 by dpozinen         ###   ########.fr       //
+//   Created: 2018/10/14 18:08:39 by dpozinen          #+#    #+#             //
+//   Updated: 2018/10/14 18:08:39 by dpozinen         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "RAMModule.hpp"
+#include "NetworkModule.hpp"
+#include <net/route.h>
+#include <net/if.h>
+#include <sys/sysctl.h>
+#include <sstream>
 
-RAMModule::RAMModule() {
+NetworkModule::NetworkModule() {
 }
 
-RAMModule::~RAMModule() {
+NetworkModule::~NetworkModule() {
 }
 
-void	RAMModule::makeAll()
+void	NetworkModule::makeAll(void) {
+	makeInOut();
+}
+
+void	NetworkModule::update(Ncurses &nc) {
+	(void)nc;
+	makeAll();
+}
+
+void	NetworkModule::makeInOut(void)
 {
-	_fullSize = "8192M";
-	makeCurUsed();
-}
-
-void	RAMModule::update(Ncurses &nc)
-{
-	// (void)nc;
-	makeCurUsed();
-	// printf("1");
-	nc.ram(_fullSize, _used, _unused);
-}
-
-void	RAMModule::makeCurUsed(void)
-{
-	FILE	*pipe = popen("top -l 1 -n0 | grep -E \"^Phys\"", "r");
+	FILE	*pipe = popen("top -l 1 -n0 | grep -E \"^Net\"", "r");
 	char	usage[256];
-	char	temp[10];
+	char	temp[24];
 	char	*t;
 
 	if (!pipe)
@@ -45,32 +44,29 @@ void	RAMModule::makeCurUsed(void)
 		fgets(usage, 256, pipe);
 
 	t = strstr(usage, ":") + 2;
+	t = strstr(t, ":") + 2;
 	int i = 0;
-	for (i = 0; t[i] != ' '; i++)
+	for (i = 0; t[i] != '/'; i++)
 		temp[i] = t[i];
 	temp[i] = '\0';
-	_used = temp;
+	_inPackets = temp;
 
 	for (i = 0; i < 10; i++)
 		temp[i] = '\0';
 
 	t = strstr(usage, ",") + 2;
-	for (i = 0; t[i] != ' '; i++)
+	for (i = 0; t[i] != '/'; i++)
 		temp[i] = t[i];
 	t += i + 1;
 	temp[i] = '\0';
-	_unused = temp;
+	_outPackets = temp;
 	pclose(pipe);
 }
 
-std::string		RAMModule::getUsed(void) const {
-	return _used;
+std::string	NetworkModule::getInPackets(void) const {
+	return _inPackets;
 }
 
-std::string		RAMModule::getUnused(void) const {
-	return _unused;
-}
-
-std::string		RAMModule::getFullSize(void) const {
-	return _fullSize;
+std::string	NetworkModule::getOutPackets(void) const {
+	return _outPackets;
 }
