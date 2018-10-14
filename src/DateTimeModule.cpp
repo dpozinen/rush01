@@ -19,21 +19,41 @@ DateTimeModule::~DateTimeModule() {
 }
 
 void	DateTimeModule::makeAll() {
-	makeDateTime();
+	makeTime();
+	makeDate();
 }
 
 void	DateTimeModule::update() {
-	makeAll();
+	makeTime();
 }
 
-void	DateTimeModule::makeDateTime()
+void	DateTimeModule::makeDate()
 {
 	time_t	curTime;
+	char	*d;
 
 	time(&curTime);
-	_dateTime = ctime(&curTime);
+	d = ctime(&curTime);
+	d[11] = '\0';
+	_date = d;
 }
 
-std::string	DateTimeModule::getDateTime() const {
-	return _dateTime;
+void	DateTimeModule::makeTime()
+{
+	time_t	curTime;
+	char	*t;
+
+	time(&curTime);
+	t = ctime(&curTime);
+	t += 11;
+	t[strlen(t) - 1] = '\0';
+	_time = t;
+}
+
+std::string	DateTimeModule::getDate() const {
+	return _date;
+}
+
+std::string	DateTimeModule::getTime() const {
+	return _time;
 }

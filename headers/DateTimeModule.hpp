@@ -18,15 +18,19 @@
 class	DateTimeModule : public IMonitorModule
 {
 	private:
-		std::string _dateTime; // Sun Oct 14 12:46:58 2018
+		// std::string _dateTime; // Sun Oct 14 12:46:58 2018
+		std::string _date; // Sun Oct 14 12:46:58 2018
+		std::string _time; // Sun Oct 14 12:46:58 2018
 
 	public:
 		DateTimeModule();
 		~DateTimeModule();
 		void	update(void);
 		void	makeAll(void);
-		void	makeDateTime(void);
-		std::string	getDateTime(void) const;
+		void	makeDate(void);
+		void	makeTime(void);
+		std::string	getDate(void) const;
+		std::string	getTime(void) const;
 };
 
 #endif
