@@ -26,6 +26,7 @@ void	RAMModule::makeAll()
 
 void	RAMModule::update(SDL &sdl)
 {
+	makeCurUsed();
 	(void)sdl;
 }
 

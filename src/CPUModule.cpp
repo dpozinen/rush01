@@ -26,6 +26,7 @@ void	CPUModule::makeAll()
 
 void	CPUModule::update(SDL &sdl)
 {
+	makeUsage();
 	(void)sdl;
 }
 

@@ -28,6 +28,7 @@ void	NetworkModule::makeAll(void) {
 
 void	NetworkModule::update(SDL &sdl)
 {
+	makeAll();
 	(void)sdl;
 }
 

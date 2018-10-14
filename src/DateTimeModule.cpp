@@ -27,6 +27,7 @@ void	DateTimeModule::makeAll() {
 void	DateTimeModule::update(SDL &sdl)
 {
 	(void)sdl;
+	makeTime();
 }
 
 void	DateTimeModule::update(Ncurses &nc) {
