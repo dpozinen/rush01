@@ -44,8 +44,9 @@ void	NetworkModule::update(SDL &sdl)
 }
 
 void	NetworkModule::update(Ncurses &nc) {
-	(void)nc;
+	// (void)nc;
 	makeAll();
+	nc.net(_inPackets, _outPackets);
 }
 
 void	NetworkModule::makeInOut(void)

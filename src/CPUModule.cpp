@@ -24,7 +24,7 @@ CPUModule::CPUModule(const CPUModule &other) {
 
 CPUModule CPUModule::operator=(const CPUModule &other)
 {
-	_generalInfo = other.getGeneralInfo;
+	_generalInfo = other._generalInfo;
 	_userUsage = other._userUsage;
 	_sysUsage = other._sysUsage;
 	_idle = other._idle;

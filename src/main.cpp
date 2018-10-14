@@ -5,6 +5,7 @@
 #include "DateTimeModule.hpp"
 #include "CPUModule.hpp"
 #include "RAMModule.hpp"
+#include "NetworkModule.hpp"
 #include "Ncurses.hpp" //in header
 #include "SDL.hpp"
 
@@ -16,6 +17,7 @@ void initModules(std::vector<IMonitorModule *> *modules)
 	(*modules).push_back(new OSModule());
 	(*modules).push_back(new CPUModule());
 	(*modules).push_back(new RAMModule());
+	(*modules).push_back(new NetworkModule());
 
 	std::vector<IMonitorModule *>::iterator it;
 	for (it = (*modules).begin(); it != (*modules).end(); ++it)
