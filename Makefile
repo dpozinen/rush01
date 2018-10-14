@@ -12,7 +12,7 @@
 
 NAME = monitor
 
-SRC = main.cpp
+SRC = main.cpp OSModule.cpp HostUserModule.cpp DateTimeModule.cpp CPUModule.cpp
 SRCDIR = src
 SRCS = $(addprefix $(SRCDIR)/, $(SRC:.cpp=.o))
 

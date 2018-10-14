@@ -15,9 +15,10 @@
 
 class	IMonitorModule
 {
-	protected:
+	public:
 		virtual void	update(void) = 0;
 		virtual void	makeAll(void) = 0;
+		virtual ~IMonitorModule() {};
 };
 
 #endif

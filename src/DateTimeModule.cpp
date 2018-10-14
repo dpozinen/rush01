@@ -31,7 +31,7 @@ void	DateTimeModule::makeDateTime()
 	time_t	curTime;
 
 	time(&curTime);
-	_dateTime =  ctime(&curTime);
+	_dateTime = ctime(&curTime);
 }
 
 std::string	DateTimeModule::getDateTime() const {
