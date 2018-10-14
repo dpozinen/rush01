@@ -13,8 +13,6 @@
 #ifndef OSMODULE_HPP
 # define OSMODULE_HPP
 
-#include <sys/types.h>
-#include <sys/sysctl.h>
 #include "IMonitorModule.hpp"
 #include "header.hpp"
 
@@ -31,6 +29,8 @@ class	OSModule : public IMonitorModule
 		void		makeName(void);
 		void		makeVersion(void);
 		void		makeBuild(void);
+		void		makeAll(void);
+		void		update(void);
 		std::string getName(void) const;
 		std::string getBuild(void) const;
 		std::string getVersion(void) const;

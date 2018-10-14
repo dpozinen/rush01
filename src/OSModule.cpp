@@ -13,6 +13,8 @@
 #include "OSModule.hpp"
 #include "header.hpp"
 
+// TODO: operator= & copy constructor
+
 OSModule::OSModule() {
 }
 
@@ -56,6 +58,17 @@ void	OSModule::makeBuild(void)
 		fgets(build, 50, pipe);
 	pclose(pipe);
 	_build = build;
+}
+
+void	OSModule::makeAll(void)
+{
+	makeBuild();
+	makeName();
+	makeVersion();
+}
+
+void	OSModule::update(void) {
+	return ;
 }
 
 std::string OSModule::getName(void) const {

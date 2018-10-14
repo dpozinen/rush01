@@ -13,9 +13,11 @@
 #ifndef IMONMOD_HPP
 # define IMONMOD_HPP
 
-class IMonitorModule
+class	IMonitorModule
 {
-	
+	protected:
+		virtual void	update(void) = 0;
+		virtual void	makeAll(void) = 0;
 };
 
 #endif
