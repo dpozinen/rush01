@@ -23,7 +23,10 @@ class	DateTimeModule : public IMonitorModule
 
 	public:
 		DateTimeModule();
+		DateTimeModule(const DateTimeModule &other);
+		DateTimeModule operator=(const DateTimeModule &other);
 		~DateTimeModule();
+		void	update(SDL &sdl);
 		void	update(Ncurses &nc);
 		void	makeAll(void);
 		void	makeDate(void);

@@ -21,6 +21,17 @@ HostUserModule::HostUserModule() {
 HostUserModule::~HostUserModule() {
 }
 
+HostUserModule::HostUserModule(const HostUserModule &other) {
+	*this = other;
+}
+
+HostUserModule HostUserModule::operator=(const HostUserModule &other)
+{
+	_hostName = other._hostName;
+	_userName = other._userName;
+	return *this;
+}
+
 void	HostUserModule::makeHostName(void)
 {
 	char	hostName[255];
@@ -41,6 +52,11 @@ void	HostUserModule::makeAll(void)
 {
 	makeUserName();
 	makeHostName();
+}
+
+void	HostUserModule::update(SDL &sdl)
+{
+	(void)sdl;
 }
 
 void	HostUserModule::update(Ncurses &nc) {

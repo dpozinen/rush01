@@ -26,11 +26,14 @@ class	OSModule : public IMonitorModule
 
 	public:
 		OSModule();
+		OSModule(const OSModule &other);
+		OSModule operator=(const OSModule &other);
 		~OSModule();
 		void		makeName(void);
 		void		makeVersion(void);
 		void		makeBuild(void);
 		void		makeAll(void);
+		void		update(SDL &sdl);
 		void		update(Ncurses &nc);
 		std::string getName(void) const;
 		std::string getBuild(void) const;

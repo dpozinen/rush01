@@ -23,8 +23,11 @@ class	HostUserModule : public IMonitorModule
 
 	public:
 		HostUserModule();
+		HostUserModule(const HostUserModule &other);
+		HostUserModule operator=(const HostUserModule &other);
 		~HostUserModule();
 		void		makeAll(void);
+		void		update(SDL &sdl);
 		void		update(Ncurses &nc);
 		void		makeHostName(void);
 		void		makeUserName(void);

@@ -21,6 +21,19 @@ OSModule::OSModule() {
 OSModule::~OSModule() {
 }
 
+OSModule::OSModule(const OSModule &other) {
+	*this = other;
+}
+
+OSModule OSModule::operator=(const OSModule &other)
+{
+	_name = other._name;
+	_version = other._version;
+	_build = other._build;
+	_all = other._all;
+	return *this;
+}
+
 void	OSModule::makeName(void)
 {
 	char	name[50];
@@ -71,6 +84,11 @@ void	OSModule::makeAll(void)
 	std::stringstream ss;
 	ss << _name << " " << _version << " " << _build;
 	_all = ss.str();
+}
+
+void	OSModule::update(SDL &sdl)
+{
+	(void)sdl;
 }
 
 void	OSModule::update(Ncurses &nc) {

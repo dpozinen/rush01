@@ -19,12 +19,15 @@ class	RAMModule : public IMonitorModule
 {
 	private:
 		std::string			_used; // 8162M
-		std::string			_unused; // 28M unused.
+		std::string			_unused; // 28M
 		std::string			_fullSize;
 
 	public:
 		RAMModule();
+		RAMModule(const RAMModule &other);
+		RAMModule operator=(const RAMModule &other);
 		~RAMModule();
+		void	update(SDL &sdl);
 		void	update(Ncurses &nc);
 		void	makeAll(void);
 		void	makeCurUsed(void);

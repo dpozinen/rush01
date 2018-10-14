@@ -25,9 +25,12 @@ class	CPUModule : public IMonitorModule
 
 	public:
 		CPUModule();
+		CPUModule(const CPUModule &other);
+		CPUModule operator=(const CPUModule &other);
 		~CPUModule();
 
 		void			makeAll(void);
+		void			update(SDL &sdl);
 		void			update(Ncurses &nc);
 		void			makeGeneralInfo(void);
 		void			makeUsage(void);
