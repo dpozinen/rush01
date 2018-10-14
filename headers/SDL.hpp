@@ -1,7 +1,7 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   GraphicalDisplay.hpp                               :+:      :+:    :+:   //
+//   SDL.hpp			                                :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: dpozinen <dpozinen@student.unit.ua>        +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
@@ -10,8 +10,8 @@
 //                                                                            //
 // ************************************************************************** //
 
-#ifndef GRAPHDISP_HPP
-# define GRAPHDISP_HPP
+#ifndef SDL_HPP
+# define SDL_HPP
 
 #include "IMonitorDisplay.hpp"
 
