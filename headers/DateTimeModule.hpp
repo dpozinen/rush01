@@ -24,6 +24,7 @@ class	DateTimeModule : public IMonitorModule
 	public:
 		DateTimeModule();
 		~DateTimeModule();
+		void	update(SDL &sdl);
 		void	update(Ncurses &nc);
 		void	makeAll(void);
 		void	makeDate(void);

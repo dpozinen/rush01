@@ -28,6 +28,7 @@ class	CPUModule : public IMonitorModule
 		~CPUModule();
 
 		void			makeAll(void);
+		void			update(SDL &sdl);
 		void			update(Ncurses &nc);
 		void			makeGeneralInfo(void);
 		void			makeUsage(void);

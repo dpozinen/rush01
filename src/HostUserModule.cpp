@@ -43,6 +43,11 @@ void	HostUserModule::makeAll(void)
 	makeHostName();
 }
 
+void	HostUserModule::update(SDL &sdl)
+{
+	(void)sdl;
+}
+
 void	HostUserModule::update(Ncurses &nc) {
 	(void)nc;
 	nc.general_help(_userName, _hostName);

@@ -27,6 +27,7 @@ class	NetworkModule : public IMonitorModule
 		void	makeAll(void);
 		void	makeInOut(void);
 		void	update(Ncurses &nc);
+		void	update(SDL &sdl);
 		std::string	getInPackets(void) const;
 		std::string	getOutPackets(void) const;
 };

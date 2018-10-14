@@ -24,6 +24,11 @@ void	CPUModule::makeAll()
 	makeGeneralInfo();
 }
 
+void	CPUModule::update(SDL &sdl)
+{
+	(void)sdl;
+}
+
 void	CPUModule::update(Ncurses &nc)
 {
 	// (void)nc;

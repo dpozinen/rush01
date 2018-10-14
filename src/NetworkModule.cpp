@@ -26,6 +26,11 @@ void	NetworkModule::makeAll(void) {
 	makeInOut();
 }
 
+void	NetworkModule::update(SDL &sdl)
+{
+	(void)sdl;
+}
+
 void	NetworkModule::update(Ncurses &nc) {
 	(void)nc;
 	makeAll();

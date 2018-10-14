@@ -25,6 +25,7 @@ class	RAMModule : public IMonitorModule
 	public:
 		RAMModule();
 		~RAMModule();
+		void	update(SDL &sdl);
 		void	update(Ncurses &nc);
 		void	makeAll(void);
 		void	makeCurUsed(void);

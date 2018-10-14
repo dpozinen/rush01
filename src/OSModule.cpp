@@ -73,6 +73,11 @@ void	OSModule::makeAll(void)
 	_all = ss.str();
 }
 
+void	OSModule::update(SDL &sdl)
+{
+	(void)sdl;
+}
+
 void	OSModule::update(Ncurses &nc) {
 	// (void)nc;
 	nc.general(_name, _version, _build);

@@ -15,7 +15,7 @@
 
 #include "IMonitorDisplay.hpp"
 
-class	GraphicalDisplay : public IMonitorDisplay
+class	SDL : public IMonitorDisplay
 {
 
 };

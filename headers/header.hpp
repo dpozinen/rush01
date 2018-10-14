@@ -25,3 +25,4 @@
 
 #include "IMonitorModule.hpp"
 #include "Ncurses.hpp"
+#include "SDL.hpp"

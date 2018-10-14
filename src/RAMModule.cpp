@@ -24,6 +24,11 @@ void	RAMModule::makeAll()
 	makeCurUsed();
 }
 
+void	RAMModule::update(SDL &sdl)
+{
+	(void)sdl;
+}
+
 void	RAMModule::update(Ncurses &nc)
 {
 	// (void)nc;

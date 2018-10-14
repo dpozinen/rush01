@@ -25,6 +25,7 @@ class	HostUserModule : public IMonitorModule
 		HostUserModule();
 		~HostUserModule();
 		void		makeAll(void);
+		void		update(SDL &sdl);
 		void		update(Ncurses &nc);
 		void		makeHostName(void);
 		void		makeUserName(void);
