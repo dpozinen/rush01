@@ -46,7 +46,7 @@ void	DateTimeModule::makeTime()
 	time(&curTime);
 	t = ctime(&curTime);
 	t += 11;
-	t[strlen(t) - 1] = '\0';
+	t[8] = '\0';
 	_time = t;
 }
 
