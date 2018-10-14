@@ -5,8 +5,9 @@
 #include "DateTimeModule.hpp"
 #include "CPUModule.hpp"
 #include "RAMModule.hpp"
-
 #include "Ncurses.hpp" //in header
+#include "SDL.hpp"
+
 
 void initModules(std::vector<IMonitorModule *> *modules)
 {
@@ -41,6 +42,7 @@ bool getFlag(int ac, char **args)
 int main(int ac, char **argv)
 {
 	Ncurses nc;
+	SDL		sdl;
 
 	unsigned int _usleep;
 	_usleep = 40000;
@@ -58,7 +60,7 @@ int main(int ac, char **argv)
 	keypad(stdscr, true);
 	int k = 0;
 
-	/* global ? */ bool graphical = getFlag(ac, argv);
+	bool graphical = getFlag(ac, argv);
 	std::vector<IMonitorModule *> modules;
 	std::vector<IMonitorModule *>::iterator it;
 
@@ -73,7 +75,10 @@ int main(int ac, char **argv)
 			break;
 		for (it = modules.begin(); it != modules.end(); ++it)
 		{
-			(*it)->update(nc);
+			if (!graphical)
+				(*it)->update(nc);
+			else
+				(*it)->update(sdl);
 		}
 		timeout(0);
 		usleep(_usleep);

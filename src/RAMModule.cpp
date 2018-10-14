@@ -18,6 +18,18 @@ RAMModule::RAMModule() {
 RAMModule::~RAMModule() {
 }
 
+RAMModule::RAMModule(const RAMModule &other) {
+	*this = other;
+}
+
+RAMModule RAMModule::operator=(const RAMModule &other)
+{
+	_used = other._used;
+	_unused = other._unused;
+	_fullSize = other._fullSize;
+	return *this;
+}
+
 void	RAMModule::makeAll()
 {
 	_fullSize = "8192M";
@@ -32,9 +44,7 @@ void	RAMModule::update(SDL &sdl)
 
 void	RAMModule::update(Ncurses &nc)
 {
-	// (void)nc;
 	makeCurUsed();
-	// printf("1");
 	nc.ram(_fullSize, _used, _unused);
 }
 

@@ -26,6 +26,8 @@ class	OSModule : public IMonitorModule
 
 	public:
 		OSModule();
+		OSModule(const OSModule &other);
+		OSModule operator=(const OSModule &other);
 		~OSModule();
 		void		makeName(void);
 		void		makeVersion(void);

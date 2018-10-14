@@ -21,7 +21,7 @@ class	IMonitorModule
 		virtual void	update(Ncurses &nc) = 0;
 		virtual void	update(SDL &sdl) = 0;
 		virtual void	makeAll(void) = 0;
-		virtual ~IMonitorModule() {};
+		virtual 		~IMonitorModule() {};
 };
 
 #endif

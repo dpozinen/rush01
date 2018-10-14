@@ -24,6 +24,16 @@ void	DateTimeModule::makeAll() {
 	makeDate();
 }
 
+DateTimeModule::DateTimeModule(const DateTimeModule &other) {
+	*this = other;
+}
+DateTimeModule DateTimeModule::operator=(const DateTimeModule &other)
+{
+	_date = other._date;
+	_time = other._time;
+	return *this;
+}
+
 void	DateTimeModule::update(SDL &sdl)
 {
 	(void)sdl;

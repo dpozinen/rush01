@@ -23,6 +23,8 @@ class	NetworkModule : public IMonitorModule
 
 	public:
 		NetworkModule();
+		NetworkModule(const NetworkModule &other);
+		NetworkModule operator=(const NetworkModule &other);
 		~NetworkModule();
 		void	makeAll(void);
 		void	makeInOut(void);

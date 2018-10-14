@@ -24,6 +24,8 @@ class	RAMModule : public IMonitorModule
 
 	public:
 		RAMModule();
+		RAMModule(const RAMModule &other);
+		RAMModule operator=(const RAMModule &other);
 		~RAMModule();
 		void	update(SDL &sdl);
 		void	update(Ncurses &nc);

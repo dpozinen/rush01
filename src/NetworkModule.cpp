@@ -22,6 +22,17 @@ NetworkModule::NetworkModule() {
 NetworkModule::~NetworkModule() {
 }
 
+NetworkModule::NetworkModule(const NetworkModule &other) {
+	*this = other;
+}
+
+NetworkModule NetworkModule::operator=(const NetworkModule &other)
+{
+	_inPackets = other._inPackets;
+	_outPackets = other._outPackets;
+	return *this;
+}
+
 void	NetworkModule::makeAll(void) {
 	makeInOut();
 }
