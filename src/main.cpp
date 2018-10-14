@@ -11,13 +11,11 @@
 // ************************************************************************** //
 
 #include "header.hpp"
-
 #include "OSModule.hpp"
 #include "HostUserModule.hpp"
 #include "DateTimeModule.hpp"
+#include "RAMModule.hpp"
 #include "CPUModule.hpp"
-
-#include "Ncurses.hpp" //in header
 
 void	initModules(std::vector<IMonitorModule*> *modules)
 {
@@ -51,6 +49,7 @@ bool	getFlag(int ac, char **args)
 int		main(int ac, char **args)
 {
 
+/*
 	Ncurses nc;
 
 	nc.start_ncurses();
@@ -69,16 +68,16 @@ int		main(int ac, char **args)
 	nc.ram();
 	keypad(stdscr, true);
 	int k = 0;
-
+*/
 	/* global ? */ bool	graphical = getFlag(ac, args);
-	std::vector<IMonitorModule*> modules;
+/*	std::vector<IMonitorModule*> modules;
 	std::vector<IMonitorModule*>::iterator it;
 
 	(void)graphical;
 
-	initModules(&modules);
+	// initModules(&modules);
 
-	int i = 0;
+	// int i = 0;
 	// while (i < 5) // while true
 	// {
 	// 	for (it = modules.begin(); it != modules.end(); ++it)
@@ -87,21 +86,25 @@ int		main(int ac, char **args)
 	// 	std::cout << i << std::endl;
 	// 	i++;
 	// }
-	// printf("1_nc\n");
 
-	while (1)
-	{
-		k = getch();
-		if (k == 27)
-			break;
-		for (it = modules.begin(); it != modules.end(); ++it)
-			(*it)->update();
-		// print() ?;
-		std::cout << i << std::endl;
-		i++;
-	}
-	delModules(modules);
-	nc.end_win();
-
+	// while (1)
+	// {
+	// 	k = getch();
+	// 	if (k == 27)
+	// 		break;
+	// 	for (it = modules.begin(); it != modules.end(); ++it)
+	// 		(*it)->update();
+	// 	// print() ?;
+	// 	// std::cout << i << std::endl;
+	// 	i++;
+	// }
+	// delModules(modules);
+	// nc.end_win();
+*/
+	(void) graphical;
+	RAMModule ramm;
+	ramm.makeAll();
+	std::cout << ramm.getUnused() << std::endl;
+	std::cout << ramm.getUsed() << std::endl;
 	return 0;
 }

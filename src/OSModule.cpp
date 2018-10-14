@@ -73,7 +73,8 @@ void	OSModule::makeAll(void)
 	_all = ss.str();
 }
 
-void	OSModule::update(void) {
+void	OSModule::update(Ncurses &nc) {
+	(void)nc;
 	return ;
 }
 

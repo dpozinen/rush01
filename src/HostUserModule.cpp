@@ -43,7 +43,8 @@ void	HostUserModule::makeAll(void)
 	makeHostName();
 }
 
-void	HostUserModule::update(void) {
+void	HostUserModule::update(Ncurses &nc) {
+	(void)nc;
 	return ;
 }
 

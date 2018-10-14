@@ -24,8 +24,9 @@ void	CPUModule::makeAll()
 	makeGeneralInfo();
 }
 
-void	CPUModule::update()
+void	CPUModule::update(Ncurses &nc)
 {
+	(void)nc;
 	makeUsage();
 }
 

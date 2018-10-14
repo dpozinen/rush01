@@ -28,7 +28,7 @@ class	CPUModule : public IMonitorModule
 		~CPUModule();
 
 		void			makeAll(void);
-		void			update(void);
+		void			update(Ncurses &nc);
 		void			makeGeneralInfo(void);
 		void			makeUsage(void);
 		std::string		getUserUsage() const;

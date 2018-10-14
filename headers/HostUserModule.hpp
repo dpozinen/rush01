@@ -25,7 +25,7 @@ class	HostUserModule : public IMonitorModule
 		HostUserModule();
 		~HostUserModule();
 		void		makeAll(void);
-		void		update(void);
+		void		update(Ncurses &nc);
 		void		makeHostName(void);
 		void		makeUserName(void);
 		std::string	getHostName(void) const;
