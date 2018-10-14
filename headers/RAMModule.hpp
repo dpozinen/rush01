@@ -18,15 +18,20 @@
 class	RAMModule : public IMonitorModule
 {
 	private:
-		std::string		_curUsed; // PhysMem: 8162M used (1496M wired), 28M unused.
-		std::string		_fullSize; // 8192
+		std::string			_used; // 8162M
+		std::string			_unused; // 28M unused.
+		std::string			_fullSize;
 
 	public:
-		void	update(void);
+		RAMModule();
+		~RAMModule();
+		void	update(Ncurses &nc);
 		void	makeAll(void);
 		void	makeCurUsed(void);
 		void	makeFullSize(void);
-		std::string	getCurUsed(void) const;
+
+		std::string	getUnused(void) const;
+		std::string	getUsed(void) const;
 		std::string	getFullSize(void) const;
 };
 
