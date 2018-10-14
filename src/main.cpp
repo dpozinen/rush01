@@ -50,8 +50,8 @@ bool	getFlag(int ac, char **args)
 
 int		main(int ac, char **args)
 {
-
 	Ncurses nc;
+	// DateTimeModule dt;
 
 	nc.start_ncurses();
 	if (nc.use_color() == -1)
@@ -95,9 +95,12 @@ int		main(int ac, char **args)
 		if (k == 27)
 			break;
 		for (it = modules.begin(); it != modules.end(); ++it)
+		{
 			(*it)->update();
+			
+		}
 		// print() ?;
-		std::cout << i << std::endl;
+		// std::cout << i << std::endl;
 		i++;
 	}
 	delModules(modules);

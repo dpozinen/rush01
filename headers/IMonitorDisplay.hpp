@@ -15,7 +15,16 @@
 
 class IMonitorDisplay
 {
-	
+	virtual void create_frame(void) = 0;
+	virtual void start_ncurses(void) = 0;
+	virtual int use_color(void) = 0;
+	virtual void end_win(void) = 0;
+	// void	score(int score, int level, int life, int enem, int hp);
+	// void	help(void);
+	virtual void data(void) = 0;
+	virtual void general(void) = 0;
+	virtual void ram(void) = 0;
+	virtual void cpu(void) = 0;
 };
 
 #endif

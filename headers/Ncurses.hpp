@@ -4,9 +4,9 @@
 
 #include <ncurses.h>
 #include <iostream>
+#include "IMonitorDisplay.hpp"
 
-
-class Ncurses
+class Ncurses : public IMonitorDisplay
 {
 public:
 	WINDOW	*win;

@@ -16,23 +16,26 @@ void	Ncurses::create_frame(void)
 	hline('-', 73);
 	wrefresh(win);
 
-	move(17, 2);
+	move(18, 2);
 	hline('-', 73);
 
-	move(22, 2);
+	move(24, 2);
 	hline('-', 73);
 	wrefresh(win);
 }
 
 void	Ncurses::data(void)
 {
+	std::string str = "Data : 14.09.18";
+	// *str = "Data : 14.09.18";
 	move(0, 31);
 	printw("SYSTEM INFO");
 	move(4, 33);
 	printw("GENERAL");
 	move(2, 4);
 	attron(COLOR_PAIR(4));
-	printw("Data : 14.09.18");
+	// printw("Data : 14.09.18");
+	printw("%s", str.c_str());
 	//printw("LEVEL: %d", level);
 	attroff(COLOR_PAIR(4));
 	move(2, 60);
@@ -53,7 +56,7 @@ void Ncurses::general(void)
 	attroff(COLOR_PAIR(4));
 	move(6, 59);
 	attron(COLOR_PAIR(4));
-	printw("192.168.1.1");
+	printw("e1r6p12.unit.ua");
 	attroff(COLOR_PAIR(4));
 
 	move(7, 6);
@@ -66,7 +69,7 @@ void Ncurses::general(void)
 	attroff(COLOR_PAIR(4));
 	move(7, 59);
 	attron(COLOR_PAIR(4));
-	printw("192.168.1.1");
+	printw("dpozinen");
 	attroff(COLOR_PAIR(4));
 
 	move(8, 6);
@@ -79,7 +82,7 @@ void Ncurses::general(void)
 	attroff(COLOR_PAIR(4));
 	move(8, 59);
 	attron(COLOR_PAIR(4));
-	printw("1.23v");
+	printw("Mac OS X 10.13.3");
 	attroff(COLOR_PAIR(4));
 
 	move(10, 35);
@@ -96,27 +99,27 @@ void Ncurses::cpu(void)
 	attron(COLOR_PAIR(4));
 	printw("->");
 	attroff(COLOR_PAIR(4));
-	move(12, 59);
+	move(12, 54);
 	attron(COLOR_PAIR(4));
-	printw("I5 7200");
+	printw("Intel(R) Core(TM)");
 	attroff(COLOR_PAIR(4));
 
-	move(13, 6);
+	// move(13, 6);
+	// attron(COLOR_PAIR(4));
+	// printw("CPU ");
+	// attroff(COLOR_PAIR(4));
+	// move(13, 36);
+	// attron(COLOR_PAIR(4));
+	// printw("->");
+	// attroff(COLOR_PAIR(4));
+	move(13, 54);
 	attron(COLOR_PAIR(4));
-	printw("CPU cors ");
-	attroff(COLOR_PAIR(4));
-	move(13, 36);
-	attron(COLOR_PAIR(4));
-	printw("->");
-	attroff(COLOR_PAIR(4));
-	move(13, 59);
-	attron(COLOR_PAIR(4));
-	printw("4");
+	printw("i5-6500 3.20GHz");
 	attroff(COLOR_PAIR(4));
 
 	move(14, 6);
 	attron(COLOR_PAIR(4));
-	printw("CPU threads ");
+	printw("CPU cors ");
 	attroff(COLOR_PAIR(4));
 	move(14, 36);
 	attron(COLOR_PAIR(4));
@@ -129,7 +132,7 @@ void Ncurses::cpu(void)
 
 	move(15, 6);
 	attron(COLOR_PAIR(4));
-	printw("CPU used ");
+	printw("CPU threads ");
 	attroff(COLOR_PAIR(4));
 	move(15, 36);
 	attron(COLOR_PAIR(4));
@@ -137,31 +140,31 @@ void Ncurses::cpu(void)
 	attroff(COLOR_PAIR(4));
 	move(15, 59);
 	attron(COLOR_PAIR(4));
+	printw("4");
+	attroff(COLOR_PAIR(4));
+
+	move(16, 6);
+	attron(COLOR_PAIR(4));
+	printw("CPU used ");
+	attroff(COLOR_PAIR(4));
+	move(16, 36);
+	attron(COLOR_PAIR(4));
+	printw("->");
+	attroff(COLOR_PAIR(4));
+	move(16, 59);
+	attron(COLOR_PAIR(4));
 	printw("13");
 	attroff(COLOR_PAIR(4));
 
-	move(17, 35);
+	move(18, 35);
 	printw("RAM");
 }
 
 void Ncurses::ram(void)
 {
-	move(19, 6);
-	attron(COLOR_PAIR(4));
-	printw("RAM used ");
-	attroff(COLOR_PAIR(4));
-	move(19, 36);
-	attron(COLOR_PAIR(4));
-	printw("->");
-	attroff(COLOR_PAIR(4));
-	move(19, 59);
-	attron(COLOR_PAIR(4));
-	printw("30");
-	attroff(COLOR_PAIR(4));
-
 	move(20, 6);
 	attron(COLOR_PAIR(4));
-	printw("RAM free ");
+	printw("RAM");
 	attroff(COLOR_PAIR(4));
 	move(20, 36);
 	attron(COLOR_PAIR(4));
@@ -169,10 +172,36 @@ void Ncurses::ram(void)
 	attroff(COLOR_PAIR(4));
 	move(20, 59);
 	attron(COLOR_PAIR(4));
+	printw("30");
+	attroff(COLOR_PAIR(4));
+
+	move(21, 6);
+	attron(COLOR_PAIR(4));
+	printw("RAM used ");
+	attroff(COLOR_PAIR(4));
+	move(21, 36);
+	attron(COLOR_PAIR(4));
+	printw("->");
+	attroff(COLOR_PAIR(4));
+	move(21, 59);
+	attron(COLOR_PAIR(4));
 	printw("70");
 	attroff(COLOR_PAIR(4));
 
-	move(22, 33);
+	move(22, 6);
+	attron(COLOR_PAIR(4));
+	printw("RAM free ");
+	attroff(COLOR_PAIR(4));
+	move(22, 36);
+	attron(COLOR_PAIR(4));
+	printw("->");
+	attroff(COLOR_PAIR(4));
+	move(22, 59);
+	attron(COLOR_PAIR(4));
+	printw("30");
+	attroff(COLOR_PAIR(4));
+
+	move(24, 33);
 	printw("CPU USED");
 }
 // void	Ncurses::score(int score, int level, int life, int enem, int hp)
