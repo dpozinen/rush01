@@ -29,6 +29,7 @@ void	CPUModule::update(Ncurses &nc)
 	// (void)nc;
 	makeUsage();
 	nc.cpu(_generalInfo, _userUsage);
+	nc.graph_cpu(_userUsage);
 }
 
 void	CPUModule::makeGeneralInfo()

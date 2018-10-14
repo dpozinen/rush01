@@ -44,6 +44,7 @@ int main(int ac, char **argv)
 
 	unsigned int _usleep;
 	_usleep = 40000;
+	nc.graph_elem = 0;
 
 	nc.start_ncurses();
 	if (nc.use_color() == -1)

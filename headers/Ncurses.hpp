@@ -10,6 +10,8 @@ class Ncurses : public IMonitorDisplay
 {
 public:
 	WINDOW	*win;
+	int		graph_elem;
+	int		ar[10];
 	void	create_frame(void);
 	void	start_ncurses(void);
 	int		use_color(void);
@@ -22,6 +24,7 @@ public:
 	void	ram(std::string all_ram, std::string used, std::string unused);
 	void	cpu(std::string info, std::string u_usage);
 	void	net(std::string in, std::string out);
+	void 	graph_cpu(std::string u_usage);
 	Ncurses();
 	~Ncurses();
 };

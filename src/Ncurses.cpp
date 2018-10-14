@@ -252,6 +252,43 @@ void	Ncurses::net(std::string in, std::string out)
 	printw("CPU USED");
 }
 
+void	Ncurses::graph_cpu(std::string u_usage)
+{
+	int i = 0;
+	if (graph_elem % 10 == 0)
+		bzero(ar, 40);
+	ar[graph_elem % 10] = atoi(u_usage.c_str()) / 10;
+	const int f = 5;
+	int val = 0;
+	while(i < 10)
+	{
+		//std::cout<<atoi(u_usage.c_str())<<std::endl;
+		val = f * i;
+		move(39 - i, val);
+
+		attron(COLOR_PAIR(1));
+		printw("*");
+		attroff(COLOR_PAIR(1));
+		i++;
+		/* code */
+	}
+	
+	// for (int j = 0; j < ar[graph_elem % 10]; j++)
+	// {
+	// 	while (i < 10)
+	// 	{
+	// 		move(39 - ar[graph_elem % 10], 4 + i * 3);
+	// 		attron(COLOR_PAIR(1));
+	// 		printw("* ");
+	// 		attroff(COLOR_PAIR(1));
+	// 		i++;
+	// 	}
+	// 	printw("<");
+	// }
+	graph_elem++;
+
+	// printw("CPU USED");
+}
 void	Ncurses::start_ncurses(void)
 {
 	int start_y = 1;
