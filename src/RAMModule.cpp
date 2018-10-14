@@ -26,8 +26,10 @@ void	RAMModule::makeAll()
 
 void	RAMModule::update(Ncurses &nc)
 {
-	(void)nc;
+	// (void)nc;
 	makeCurUsed();
+	// printf("1");
+	nc.ram(_fullSize, _used, _unused);
 }
 
 void	RAMModule::makeCurUsed(void)

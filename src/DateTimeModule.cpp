@@ -25,8 +25,9 @@ void	DateTimeModule::makeAll() {
 }
 
 void	DateTimeModule::update(Ncurses &nc) {
-	(void)nc;
+	// (void)nc;
 	makeTime();
+	nc.data(_date, _time);
 }
 
 void	DateTimeModule::makeDate()

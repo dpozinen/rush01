@@ -4,6 +4,7 @@
 #include "HostUserModule.hpp"
 #include "DateTimeModule.hpp"
 #include "CPUModule.hpp"
+#include "RAMModule.hpp"
 
 #include "Ncurses.hpp" //in header
 
@@ -13,6 +14,7 @@ void initModules(std::vector<IMonitorModule *> *modules)
 	(*modules).push_back(new HostUserModule());
 	(*modules).push_back(new OSModule());
 	(*modules).push_back(new CPUModule());
+	(*modules).push_back(new RAMModule());
 
 	std::vector<IMonitorModule *>::iterator it;
 	for (it = (*modules).begin(); it != (*modules).end(); ++it)
@@ -39,6 +41,8 @@ bool getFlag(int ac, char **args)
 int main(int ac, char **args)
 {
 	Ncurses nc;
+	unsigned int _usleep;
+	_usleep = 40000;
 	// DateTimeModule dt;
 
 	nc.start_ncurses();
@@ -51,10 +55,10 @@ int main(int ac, char **args)
 	attron(COLOR_PAIR(1));
 	printw("Press any button to start!");
 	attroff(COLOR_PAIR(1));
-	nc.data();
+	// nc.data();
 	// nc.general();
 	// nc.cpu();
-	nc.ram();
+	// nc.ram();
 	keypad(stdscr, true);
 	int k = 0;
 
@@ -88,6 +92,8 @@ int main(int ac, char **args)
 		}
 		// print() ?;
 		// std::cout << i << std::endl;
+		timeout(0);
+		usleep(_usleep);
 		i++;
 	}
 	delModules(modules);

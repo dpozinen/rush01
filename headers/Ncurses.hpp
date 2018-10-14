@@ -16,11 +16,12 @@ public:
 	void	end_win(void);
 	// void	score(int score, int level, int life, int enem, int hp);
 	// void	help(void);
-	void	data(void);
+	void	data(std::string data, std::string time);
 	void	general(std::string name, std::string ver, std::string buld);
 	void	general_help(std::string user, std::string host);
-	void	ram(void);
-	void	cpu(void);
+	void	ram(std::string all_ram, std::string used, std::string unused);
+	void	cpu(std::string info, std::string u_usage);
+	void	net(std::string in, std::string out);
 	Ncurses();
 	~Ncurses();
 };
