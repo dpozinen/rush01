@@ -30,6 +30,7 @@ void	OSModule::makeName(void)
 		return ; // TODO: throw
 	while (!feof(pipe))
 		fgets(name, 50, pipe);
+	name[strlen(name) - 1] = '\0';
 	pclose(pipe);
 	_name = name;
 }
@@ -43,6 +44,7 @@ void	OSModule::makeVersion(void)
 		return ; // TODO: throw
 	while (!feof(pipe))
 		fgets(version, 50, pipe);
+	version[strlen(version) - 1] = '\0';
 	pclose(pipe);
 	_version = version;
 }
@@ -56,6 +58,7 @@ void	OSModule::makeBuild(void)
 		return ; // TODO: throw
 	while (!feof(pipe))
 		fgets(build, 50, pipe);
+	build[strlen(build) - 1] = '\0';
 	pclose(pipe);
 	_build = build;
 }
@@ -65,6 +68,9 @@ void	OSModule::makeAll(void)
 	makeBuild();
 	makeName();
 	makeVersion();
+	std::stringstream ss;
+	ss << _name << " " << _version << " " << _build;
+	_all = ss.str();
 }
 
 void	OSModule::update(void) {
@@ -81,4 +87,8 @@ std::string OSModule::getVersion(void) const {
 
 std::string OSModule::getBuild(void) const {
 	return _build;
+}
+
+std::string OSModule::getAll(void) const {
+	return _all;
 }

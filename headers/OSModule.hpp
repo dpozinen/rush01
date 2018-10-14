@@ -22,6 +22,7 @@ class	OSModule : public IMonitorModule
 		std::string		_name; // Mac OS X
 		std::string		_version; // 10.13.3
 		std::string		_build; // 17D47
+		std::string		_all; // 17D47
 
 	public:
 		OSModule();
@@ -34,6 +35,7 @@ class	OSModule : public IMonitorModule
 		std::string getName(void) const;
 		std::string getBuild(void) const;
 		std::string getVersion(void) const;
+		std::string getAll(void) const;
 };
 
 #endif
