@@ -31,7 +31,7 @@ class	OSModule : public IMonitorModule
 		void		makeVersion(void);
 		void		makeBuild(void);
 		void		makeAll(void);
-		void		update(void);
+		void		update(Ncurses &nc);
 		std::string getName(void) const;
 		std::string getBuild(void) const;
 		std::string getVersion(void) const;

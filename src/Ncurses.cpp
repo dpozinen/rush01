@@ -44,7 +44,7 @@ void	Ncurses::data(void)
 	attroff(COLOR_PAIR(4));
 }
 
-void Ncurses::general(void)
+void Ncurses::general_help(std::string user, std::string host)
 {
 	move(6, 6);
 	attron(COLOR_PAIR(4));
@@ -56,7 +56,7 @@ void Ncurses::general(void)
 	attroff(COLOR_PAIR(4));
 	move(6, 59);
 	attron(COLOR_PAIR(4));
-	printw("e1r6p12.unit.ua");
+	printw("%s", user.c_str());
 	attroff(COLOR_PAIR(4));
 
 	move(7, 6);
@@ -69,8 +69,14 @@ void Ncurses::general(void)
 	attroff(COLOR_PAIR(4));
 	move(7, 59);
 	attron(COLOR_PAIR(4));
-	printw("dpozinen");
+	printw("%s", host.c_str());
 	attroff(COLOR_PAIR(4));
+}
+
+
+void Ncurses::general(std::string name, std::string ver, std::string buld)
+{
+	(void)buld;
 
 	move(8, 6);
 	attron(COLOR_PAIR(4));
@@ -80,9 +86,15 @@ void Ncurses::general(void)
 	attron(COLOR_PAIR(4));
 	printw("->");
 	attroff(COLOR_PAIR(4));
-	move(8, 59);
+	move(8, 58);
 	attron(COLOR_PAIR(4));
-	printw("Mac OS X 10.13.3");
+	// printw("Mac OS X 10.13.3");
+	printw("%s", name.c_str());
+	attroff(COLOR_PAIR(4));
+	move(8, 67);
+	attron(COLOR_PAIR(4));
+	// printw("Mac OS X 10.13.3");
+	printw("%s", ver.c_str());
 	attroff(COLOR_PAIR(4));
 
 	move(10, 35);

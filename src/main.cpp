@@ -1,15 +1,3 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   main.cpp                                           :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: dpozinen <dpozinen@student.unit.ua>        +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/10/13 17:24:22 by dpozinen          #+#    #+#             //
-//   Updated: 2018/10/13 17:24:22 by dpozinen         ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
-
 #include "header.hpp"
 
 #include "OSModule.hpp"
@@ -19,27 +7,27 @@
 
 #include "Ncurses.hpp" //in header
 
-void	initModules(std::vector<IMonitorModule*> *modules)
+void initModules(std::vector<IMonitorModule *> *modules)
 {
 	(*modules).push_back(new DateTimeModule());
 	(*modules).push_back(new HostUserModule());
 	(*modules).push_back(new OSModule());
 	(*modules).push_back(new CPUModule());
 
-	std::vector<IMonitorModule*>::iterator it;
+	std::vector<IMonitorModule *>::iterator it;
 	for (it = (*modules).begin(); it != (*modules).end(); ++it)
 		(*it)->makeAll();
 }
 
-void	delModules(std::vector<IMonitorModule*> modules)
+void delModules(std::vector<IMonitorModule *> modules)
 {
-	std::vector<IMonitorModule*>::iterator it;
+	std::vector<IMonitorModule *>::iterator it;
 
 	for (it = modules.begin(); it != modules.end(); ++it)
 		delete *it;
 }
 
-bool	getFlag(int ac, char **args)
+bool getFlag(int ac, char **args)
 {
 	if (ac == 1)
 		return false; // default view == ncurses
@@ -48,7 +36,7 @@ bool	getFlag(int ac, char **args)
 	return false;
 }
 
-int		main(int ac, char **args)
+int main(int ac, char **args)
 {
 	Ncurses nc;
 	// DateTimeModule dt;
@@ -64,15 +52,15 @@ int		main(int ac, char **args)
 	printw("Press any button to start!");
 	attroff(COLOR_PAIR(1));
 	nc.data();
-	nc.general();
-	nc.cpu();
+	// nc.general();
+	// nc.cpu();
 	nc.ram();
 	keypad(stdscr, true);
 	int k = 0;
 
-	/* global ? */ bool	graphical = getFlag(ac, args);
-	std::vector<IMonitorModule*> modules;
-	std::vector<IMonitorModule*>::iterator it;
+	/* global ? */ bool graphical = getFlag(ac, args);
+	std::vector<IMonitorModule *> modules;
+	std::vector<IMonitorModule *>::iterator it;
 
 	(void)graphical;
 
@@ -96,8 +84,7 @@ int		main(int ac, char **args)
 			break;
 		for (it = modules.begin(); it != modules.end(); ++it)
 		{
-			(*it)->update();
-			
+			(*it)->update(nc);
 		}
 		// print() ?;
 		// std::cout << i << std::endl;

@@ -17,7 +17,8 @@ public:
 	// void	score(int score, int level, int life, int enem, int hp);
 	// void	help(void);
 	void	data(void);
-	void	general(void);
+	void	general(std::string name, std::string ver, std::string buld);
+	void	general_help(std::string user, std::string host);
 	void	ram(void);
 	void	cpu(void);
 	Ncurses();

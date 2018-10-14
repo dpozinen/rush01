@@ -18,18 +18,22 @@
 class	CPUModule : public IMonitorModule
 {
 	private:
-		std::string		_generalInfo; // Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
-		std::string		_usage; // CPU usage: 26.43% user, 31.3% sys, 42.52% idle
+		std::string		_generalInfo; // i5-6500 CPU @ 3.20GHz
+		std::string		_userUsage; // 26.43%
+		std::string		_sysUsage; // 31.3%
+		std::string		_idle; // 42.52%
 
 	public:
 		CPUModule();
 		~CPUModule();
 
 		void			makeAll(void);
-		void			update(void);
+		void			update(Ncurses &nc);
 		void			makeGeneralInfo(void);
 		void			makeUsage(void);
-		std::string		getUsage(void) const;
+		std::string		getUserUsage() const;
+		std::string		getSysUsage() const;
+		std::string		getIdle() const;
 		std::string		getGeneralInfo(void) const;
 
 };

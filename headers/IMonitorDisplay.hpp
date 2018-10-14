@@ -12,6 +12,7 @@
 
 #ifndef IMONDISP_HPP
 # define IMONDISP_HPP
+# include <iostream>
 
 class IMonitorDisplay
 {
@@ -22,7 +23,7 @@ class IMonitorDisplay
 	// void	score(int score, int level, int life, int enem, int hp);
 	// void	help(void);
 	virtual void data(void) = 0;
-	virtual void general(void) = 0;
+	virtual void general(std::string name, std::string ver, std::string buld) = 0;
 	virtual void ram(void) = 0;
 	virtual void cpu(void) = 0;
 };

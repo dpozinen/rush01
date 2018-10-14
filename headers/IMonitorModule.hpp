@@ -13,10 +13,12 @@
 #ifndef IMONMOD_HPP
 # define IMONMOD_HPP
 
+#include "header.hpp"
+
 class	IMonitorModule
 {
 	public:
-		virtual void	update(void) = 0;
+		virtual void	update(Ncurses &nc) = 0;
 		virtual void	makeAll(void) = 0;
 		virtual ~IMonitorModule() {};
 };

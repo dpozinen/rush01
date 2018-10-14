@@ -24,3 +24,4 @@
 
 
 #include "IMonitorModule.hpp"
+#include "Ncurses.hpp"

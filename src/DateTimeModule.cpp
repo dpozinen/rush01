@@ -11,6 +11,7 @@
 // ************************************************************************** //
 
 #include "DateTimeModule.hpp"
+#include "header.hpp"
 
 DateTimeModule::DateTimeModule() {
 }
@@ -23,7 +24,8 @@ void	DateTimeModule::makeAll() {
 	makeDate();
 }
 
-void	DateTimeModule::update() {
+void	DateTimeModule::update(Ncurses &nc) {
+	(void)nc;
 	makeTime();
 }
 
