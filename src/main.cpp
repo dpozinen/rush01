@@ -38,12 +38,12 @@ bool getFlag(int ac, char **args)
 	return false;
 }
 
-int main(int ac, char **args)
+int main(int ac, char **argv)
 {
 	Ncurses nc;
+
 	unsigned int _usleep;
 	_usleep = 40000;
-	// DateTimeModule dt;
 
 	nc.start_ncurses();
 	if (nc.use_color() == -1)
@@ -55,32 +55,17 @@ int main(int ac, char **args)
 	attron(COLOR_PAIR(1));
 	printw("Press any button to start!");
 	attroff(COLOR_PAIR(1));
-	// nc.data();
-	// nc.general();
-	// nc.cpu();
-	// nc.ram();
 	keypad(stdscr, true);
 	int k = 0;
 
-	/* global ? */ bool graphical = getFlag(ac, args);
+	/* global ? */ bool graphical = getFlag(ac, argv);
 	std::vector<IMonitorModule *> modules;
 	std::vector<IMonitorModule *>::iterator it;
 
 	(void)graphical;
 
 	initModules(&modules);
-
 	int i = 0;
-	// while (i < 5) // while true
-	// {
-	// 	for (it = modules.begin(); it != modules.end(); ++it)
-	// 		(*it)->update();
-	// 	// print() ?;
-	// 	std::cout << i << std::endl;
-	// 	i++;
-	// }
-	// printf("1_nc\n");
-
 	while (1)
 	{
 		k = getch();
@@ -90,10 +75,13 @@ int main(int ac, char **args)
 		{
 			(*it)->update(nc);
 		}
-		// print() ?;
-		// std::cout << i << std::endl;
 		timeout(0);
 		usleep(_usleep);
+
+		move(42, 2);
+		attron(COLOR_PAIR(2));
+		printw("ESC to exit                          ");
+		attroff(COLOR_PAIR(2));
 		i++;
 	}
 	delModules(modules);
