@@ -23,25 +23,38 @@ void	initModules(std::vector<IMonitorModule*> *modules)
 	(*modules).push_back(new HostUserModule());
 	(*modules).push_back(new OSModule());
 	(*modules).push_back(new CPUModule());
+
+	std::vector<IMonitorModule*>::iterator it;
+	for (it = (*modules).begin(); it != (*modules).end(); ++it)
+		(*it)->makeAll();
 }
 
 void	delModules(std::vector<IMonitorModule*> modules)
 {
-	delete modules[0];
-	delete modules[1];
-	delete modules[2];
-	delete modules[3];
+	std::vector<IMonitorModule*>::iterator it;
+
+	for (it = modules.begin(); it != modules.end(); ++it)
+		delete *it;
 }
 
-int		main(void)
+bool	getFlag(int ac, char **args)
 {
+	if (ac == 1)
+		return false; // default view == ncurses
+	if (!strcmp(args[1], "-g"))
+		return true;
+	return false;
+}
+
+int		main(int ac, char **args)
+{
+	/* global ? */ bool	graphical = getFlag(ac, args);
 	std::vector<IMonitorModule*> modules;
 	std::vector<IMonitorModule*>::iterator it;
 
-	initModules(&modules);
+	(void)graphical;
 
-	for (it = modules.begin(); it != modules.end(); ++it)
-		(*it)->makeAll();
+	initModules(&modules);
 
 	int i = 0;
 	while (i < 5) // while true
